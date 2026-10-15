@@ -711,7 +711,7 @@ th.n{text-align:right}
 tbody tr{cursor:pointer}
 tbody tr:hover{background:var(--drop-bg)}
 .pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
-.p-keep{background:var(--keep-bg);color:var(--keep)} .p-alt{background:var(--res-bg);color:var(--res)} .p-drop{background:var(--drop-bg);color:var(--drop)}
+.p-keep{background:var(--keep-bg);color:var(--keep)} .p-consider{background:var(--res-bg);color:var(--res)} .p-alt{background:var(--res-bg);color:var(--res)} .p-drop{background:var(--drop-bg);color:var(--drop)}
 .why{color:var(--muted);min-width:280px}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px}
 .notes{display:grid;gap:8px;color:var(--muted);font-size:14px;max-width:80ch}
@@ -757,9 +757,9 @@ const HUBC=["#d1495b","#2e86ab","#e0a100","#7b4fbf","#2a9d5c","#e76f2a","#0f9aa8
 const mk=DATA.makro, hubs=mk.filter(m=>m.status==="keep").sort((a,b)=>a.hub-b.hub);
 const total=hubs.reduce((s,h)=>s+h.n,0);
 document.getElementById("kpis").innerHTML=[
- [hubs.length+" ฮับ","Makro ที่แนะนำเปิด"],
+ [hubs.length+" ฮับ","แนะนำเปิด 8 · เพื่อใช้พิจารณา 12"],
  [total.toLocaleString()+" ร้าน","7-11 ที่ส่งได้ ไม่ซ้ำกัน"],
- ["8 + 12","กทม.+ปริมณฑล + ต่างจังหวัด (จังหวัดละ 1)"],
+ ["12 ฮับ","ต่างจังหวัด เพื่อใช้พิจารณา (จังหวัดละ 1)"],
  ["≤ 5.0 กม.","ร้านไกลสุดของทุกฮับ"]
 ].map(([b,s])=>`<div class="kpi"><b>${b}</b><span>${s}</span></div>`).join("");
 
@@ -796,10 +796,10 @@ for(const m of mk){
                  :`<svg width="14" height="14"><path d="M3 3 11 11M11 3 3 11" stroke="${col}" stroke-width="2.4"/></svg>`});
   const mm=L.marker([m.lat,m.lng],{icon,zIndexOffset:keep?1000:res?900:0})
     .bindTooltip(m.name,{permanent:keep,direction:"top",offset:[0,-8],className:"mk"})
-    .bindPopup(`<b>${m.name}</b><br>${label(m.status)}<br>${m.why}`).addTo(map);
+    .bindPopup(`<b>${m.name}</b><br>${label(m)}<br>${m.why}`).addTo(map);
   markers[m.name]=mm;
 }
-function label(s){return s==="keep"?"แนะนำเปิด":s==="alt"?"ตัวเลือกแทน":"คัดออก"}
+function label(m){return m.status==="keep"?(m.bkk?"แนะนำเปิด":"เพื่อใช้พิจารณา"):m.status==="alt"?"ตัวเลือกแทน":"คัดออก"}
 
 const lg=document.getElementById("legend");
 lg.innerHTML=hubs.map(h=>`<span class="sw"><i style="background:${HUBC[h.hub]}"></i>${h.name}</span>`).join("")+
@@ -818,7 +818,7 @@ function render(){
   const f=rows.filter(m=>cur==="all"||(cur==="bkk"&&m.bkk)||(cur==="keep"&&m.status!=="drop")||(cur==="drop"&&m.status==="drop")||(cur==="up"&&!m.bkk));
   tb.innerHTML=f.map(m=>`<tr tabindex="0" data-n="${m.name}">
    <td>${m.status==="keep"?`<span class="dot" style="background:${HUBC[m.hub]}"></span>`:""}${m.name} <span style="color:var(--muted)">(${m.prov}${m.provq?"*":""})</span></td>
-   <td><span class="pill p-${m.status}">${label(m.status)}</span></td>
+   <td><span class="pill p-${m.status==="keep"&&!m.bkk?"consider":m.status}">${label(m)}</span></td>
    <td class="n">${m.r3}</td><td class="n">${m.r5}</td>
    <td class="n">${m.status==="keep"?m.n:"–"}</td>
    <td class="n">${m.status==="keep"?m.avg.toFixed(2)+" กม.":"–"}</td>

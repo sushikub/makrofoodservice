@@ -12,10 +12,10 @@
 
 20 ฮับ ส่งได้ 2,933 ร้าน
 
-| กลุ่ม | ฮับ | ร้าน |
-|---|---|---|
-| กทม.+ปริมณฑล | Kanlapaphruek, Chan Road, Pradit Manutham, Pinklao, Sukhumvit 22, Onnut, Mengjai, Phong Phet | 2,325 |
-| ต่างจังหวัด | Pattaya N., Sirimangkalajarn, Patong, Khon Kaen 2, Ko Samui, Nakhon Ratchsima 2, Cha-Am, Hua Hin, Ao Nang, Phitsanulok 2, Ban Phe, Ko Chang | 608 |
+| กลุ่ม | สถานะ | ฮับ | ร้าน |
+|---|---|---|---|
+| กทม.+ปริมณฑล | แนะนำเปิด | Kanlapaphruek, Chan Road, Pradit Manutham, Pinklao, Sukhumvit 22, Onnut, Mengjai, Phong Phet | 2,325 |
+| ต่างจังหวัด | เพื่อใช้พิจารณา | Pattaya N., Sirimangkalajarn, Patong, Khon Kaen 2, Ko Samui, Nakhon Ratchsima 2, Cha-Am, Hua Hin, Ao Nang, Phitsanulok 2, Ban Phe, Ko Chang | 608 |
 
 ## ไฟล์
 
