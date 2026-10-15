@@ -1,0 +1,52 @@
+﻿makro,group,province,selected,stores_3km,stores_5km,stores_assigned,avg_km,max_km
+Chan Road,BKK+vicinity,,True,203,489,320,2.83,4.98
+Phong Phet,BKK+vicinity,,True,105,307,298,3.26,5.0
+Pinklao,BKK+vicinity,,True,114,298,295,3.17,4.99
+Sukhumvit 22,BKK+vicinity,,True,208,549,290,2.76,4.98
+Kanlapaphruek,BKK+vicinity,,True,103,284,282,3.35,4.98
+Pradit Manutham,BKK+vicinity,,True,90,318,280,3.42,4.99
+Onnut,BKK+vicinity,,True,125,315,280,3.04,4.99
+Mengjai,BKK+vicinity,,True,199,542,280,2.84,4.99
+Pattaya N.,upcountry,ชลบุรี,True,131,224,224,2.84,4.98
+Sirimangkalajarn,upcountry,เชียงใหม่,True,62,102,102,2.6,4.96
+Patong,upcountry,ภูเก็ต,True,56,72,72,1.9,4.69
+Khon Kaen 2,upcountry,ขอนแก่น,True,19,48,48,3.18,4.83
+Ko Samui,upcountry,สุราษฎร์ธานี,True,31,45,45,2.52,4.97
+Nakhon Ratchsima 2,upcountry,นครราชสีมา,True,13,26,26,3.09,4.86
+Cha-Am,upcountry,เพชรบุรี,True,18,24,24,1.91,4.87
+Hua Hin,upcountry,ประจวบคีรีขันธ์,True,12,22,22,2.75,4.97
+Ao Nang,upcountry,กระบี่,True,16,21,21,2.44,4.53
+Phitsanulok 2,upcountry,พิษณุโลก,True,5,10,10,2.8,4.59
+Ban Phe,upcountry,ระยอง,True,5,9,9,2.17,4.27
+Ko Chang,upcountry,ตราด,True,2,5,5,2.42,3.77
+Town in Town,BKK+vicinity,,False,167,486,0,,
+Nawamin 70,BKK+vicinity,,False,72,232,0,,
+Bodindecha,BKK+vicinity,,False,173,434,0,,
+Bang Kho Laem,BKK+vicinity,,False,155,407,0,,
+Pracha Uthit,BKK+vicinity,,False,89,202,0,,
+Rama 4,BKK+vicinity,,False,133,420,0,,
+Ramkhamhaeng (Sammakorn),BKK+vicinity,,False,60,203,0,,
+Ram Khamhang 24,BKK+vicinity,,False,180,352,0,,
+Lat Krabang,BKK+vicinity,,False,39,103,0,,
+Wongsakorn 2,BKK+vicinity,,False,41,112,0,,
+Wang Hin,BKK+vicinity,,False,127,308,0,,
+Srinakarin 2,BKK+vicinity,,False,82,235,0,,
+Suksawas,BKK+vicinity,,False,107,323,0,,
+Sukhumvit 71,BKK+vicinity,,False,140,359,0,,
+Udomsuk,BKK+vicinity,,False,122,260,0,,
+Thep Rak,BKK+vicinity,,False,83,181,0,,
+Petchkasem,BKK+vicinity,,False,67,168,0,,
+Leab Klongsong,BKK+vicinity,,False,49,121,0,,
+Sanambinnam,BKK+vicinity,,False,90,239,0,,
+Muangthong,BKK+vicinity,,False,75,211,0,,
+Rungroj Market,BKK+vicinity,,False,26,69,0,,
+Nathong charoen,BKK+vicinity,,False,70,167,0,,
+Lam Luk Ka,BKK+vicinity,,False,54,153,0,,
+Phraeksa,BKK+vicinity,,False,48,115,0,,
+Amata Nakhon,upcountry,ชลบุรี,False,41,63,0,,
+Laem Chabang,upcountry,ชลบุรี,False,26,64,0,,
+Pakchong,upcountry,นครราชสีมา,False,4,11,0,,
+Karon,upcountry,ภูเก็ต,False,23,44,0,,
+Rawai,upcountry,ภูเก็ต,False,13,50,0,,
+Lamai,upcountry,สุราษฎร์ธานี,False,17,21,0,,
+Ko Pha-Ngan,upcountry,สุราษฎร์ธานี,False,15,21,0,,
