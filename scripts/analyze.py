@@ -6,6 +6,8 @@ Rules
   The script tries every combination of candidate hubs, keeps the largest
   feasible set, then the one that serves the most stores.
   FORCE_IN / FORCE_OUT then swap hubs by business decision.
+  Final assignment uses free-shape territories: each hub takes its nearest
+  stores until it has 280-320, even past 5 km (ASSIGN_MAX_KM is only a search cap).
 - Upcountry: one hub per province, the branch with the most stores within 5 km.
 
 Usage:  python scripts/analyze.py
@@ -24,9 +26,13 @@ LO, HI = 280, 320
 N_BKK = 32  # rows 1-32 of the Makro file are Bangkok + vicinity
 
 # Manual overrides applied after the search (business decision, 1 Nov 2026).
-# A forced hub keeps every store it can reach but has no 280 minimum.
+# A forced hub has no 280 minimum (with free-shape territories it still reaches 320).
 FORCE_IN = ["Srinakarin 2"]
 FORCE_OUT = ["Onnut"]
+
+# Free-shape territories (1 Nov 2026): Bangkok hubs may serve stores beyond 5 km.
+# Set to RADIUS_KM to go back to the strict 5 km circle.
+ASSIGN_MAX_KM = 12.0
 
 PROVINCE = {
     "Hua Hin": "ประจวบคีรีขันธ์", "Cha-Am": "เพชรบุรี", "Pattaya N.": "ชลบุรี",
@@ -102,7 +108,7 @@ def main():
     names = list(m.name)
     forced = [names.index(x) for x in FORCE_IN]
     bkk = [h for h in best if names[h] not in FORCE_OUT] + [h for h in forced if h not in best]
-    asg = assign(W, D, bkk, len(s), forced)
+    asg = assign(D <= ASSIGN_MAX_KM, D, bkk, len(s), forced)
 
     # Upcountry: one hub per province
     pick = {}
@@ -128,6 +134,7 @@ def main():
             "stores_assigned": int(len(d)),
             "avg_km": round(float(d.mean()), 2) if len(d) else None,
             "max_km": round(float(d.max()), 2) if len(d) else None,
+            "beyond_5km": int((d > RADIUS_KM).sum()),
         })
     out = ROOT / "output"
     out.mkdir(exist_ok=True)
