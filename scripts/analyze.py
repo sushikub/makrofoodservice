@@ -5,6 +5,7 @@ Rules
   7-Eleven stores within 5 km, and each store belongs to one hub only.
   The script tries every combination of candidate hubs, keeps the largest
   feasible set, then the one that serves the most stores.
+  FORCE_IN / FORCE_OUT then swap hubs by business decision.
 - Upcountry: one hub per province, the branch with the most stores within 5 km.
 
 Usage:  python scripts/analyze.py
@@ -21,6 +22,11 @@ ROOT = Path(__file__).resolve().parents[1]
 RADIUS_KM = 5.0
 LO, HI = 280, 320
 N_BKK = 32  # rows 1-32 of the Makro file are Bangkok + vicinity
+
+# Manual overrides applied after the search (business decision, 1 Nov 2026).
+# A forced hub keeps every store it can reach but has no 280 minimum.
+FORCE_IN = ["Srinakarin 2"]
+FORCE_OUT = ["Onnut"]
 
 PROVINCE = {
     "Hua Hin": "ประจวบคีรีขันธ์", "Cha-Am": "เพชรบุรี", "Pattaya N.": "ชลบุรี",
@@ -51,17 +57,19 @@ def max_flow(W, hubs, cap):
     return nx.maximum_flow_value(G, "s", "t")
 
 
-def assign(W, D, hubs, n_store):
-    """Min-cost assignment: every hub gets LO..HI stores, maximise coverage, then shortest distance."""
+def assign(W, D, hubs, n_store, forced=()):
+    """Min-cost assignment: every hub gets LO..HI stores (forced hubs 0..HI), maximise coverage, then shortest distance."""
     sup = HI * len(hubs)
     G = nx.DiGraph()
     G.add_node("s", demand=-sup)
     G.add_node("t", demand=sup)
     G.add_edge("s", "t", capacity=sup, weight=0)
     for h in hubs:
-        G.add_edge("s", f"a{h}", capacity=LO, weight=-10**7)
-        G.add_edge("s", f"b{h}", capacity=HI - LO, weight=-10**5)
-        G.add_edge(f"a{h}", f"h{h}", weight=0)
+        lo = 0 if h in forced else LO
+        if lo:
+            G.add_edge("s", f"a{h}", capacity=lo, weight=-10**7)
+            G.add_edge(f"a{h}", f"h{h}", weight=0)
+        G.add_edge("s", f"b{h}", capacity=HI - lo, weight=-10**6 if h in forced else -10**5)
         G.add_edge(f"b{h}", f"h{h}", weight=0)
         for st in np.where(W[h])[0]:
             G.add_edge(f"h{h}", f"s{st}", capacity=1, weight=int(D[h, st] * 1000))
@@ -91,8 +99,10 @@ def main():
         if feas:
             best = max(feas, key=lambda c: max_flow(W, c, HI))
             break
-    bkk = list(best)
-    asg = assign(W, D, bkk, len(s))
+    names = list(m.name)
+    forced = [names.index(x) for x in FORCE_IN]
+    bkk = [h for h in best if names[h] not in FORCE_OUT] + [h for h in forced if h not in best]
+    asg = assign(W, D, bkk, len(s), forced)
 
     # Upcountry: one hub per province
     pick = {}

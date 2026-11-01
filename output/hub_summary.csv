@@ -1,12 +1,12 @@
 ﻿makro,group,province,selected,stores_3km,stores_5km,stores_assigned,avg_km,max_km
 Chan Road,BKK+vicinity,,True,203,489,320,2.83,4.98
-Phong Phet,BKK+vicinity,,True,105,307,298,3.26,5.0
+Sukhumvit 22,BKK+vicinity,,True,208,549,320,2.83,4.98
+Mengjai,BKK+vicinity,,True,199,542,320,3.14,4.99
+Pradit Manutham,BKK+vicinity,,True,90,318,309,3.51,4.99
+Phong Phet,BKK+vicinity,,True,105,307,304,3.28,5.0
 Pinklao,BKK+vicinity,,True,114,298,295,3.17,4.99
-Sukhumvit 22,BKK+vicinity,,True,208,549,290,2.76,4.98
 Kanlapaphruek,BKK+vicinity,,True,103,284,282,3.35,4.98
-Pradit Manutham,BKK+vicinity,,True,90,318,280,3.42,4.99
-Onnut,BKK+vicinity,,True,125,315,280,3.04,4.99
-Mengjai,BKK+vicinity,,True,199,542,280,2.84,4.99
+Srinakarin 2,BKK+vicinity,,True,82,235,235,3.38,4.98
 Pattaya N.,upcountry,ชลบุรี,True,131,224,224,2.84,4.98
 Sirimangkalajarn,upcountry,เชียงใหม่,True,62,102,102,2.6,4.96
 Patong,upcountry,ภูเก็ต,True,56,72,72,1.9,4.69
@@ -30,10 +30,10 @@ Ram Khamhang 24,BKK+vicinity,,False,180,352,0,,
 Lat Krabang,BKK+vicinity,,False,39,103,0,,
 Wongsakorn 2,BKK+vicinity,,False,41,112,0,,
 Wang Hin,BKK+vicinity,,False,127,308,0,,
-Srinakarin 2,BKK+vicinity,,False,82,235,0,,
 Suksawas,BKK+vicinity,,False,107,323,0,,
 Sukhumvit 71,BKK+vicinity,,False,140,359,0,,
 Udomsuk,BKK+vicinity,,False,122,260,0,,
+Onnut,BKK+vicinity,,False,125,315,0,,
 Thep Rak,BKK+vicinity,,False,83,181,0,,
 Petchkasem,BKK+vicinity,,False,67,168,0,,
 Leab Klongsong,BKK+vicinity,,False,49,121,0,,
